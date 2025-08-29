@@ -1,6 +1,6 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import{ InvoiceApp } from './components/InvoiceApp.jsx'
+import{ InvoiceApp } from './InvoiceApp.jsx'
 
 
 
