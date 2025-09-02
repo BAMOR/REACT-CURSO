@@ -1,5 +1,7 @@
+import { useReducer } from "react"
 import { UserForm } from "./components/UserFrom"
 import { UserList } from "./components/UserList"
+import { usersReducer } from "./Reducer/usersReducer"
 
 
     const initialUsers = [
@@ -12,9 +14,27 @@ import { UserList } from "./components/UserList"
 
 export const UserApp = () => {
 
+    const [users, dispatch] =  useReducer(usersReducer, initialUsers)
+
 
         const handrelAddUser = (user) =>{
-            console.log(user)
+            // console.log(user)
+            dispatch({
+                type:'addUser',
+                payload : user
+
+
+            })
+        }
+
+        const handrelRemoveUser =(id) =>{
+            // console.log(id)
+            dispatch ({
+                type: 'removeUser',
+                payload: id,
+            })
+
+
         }
     
 
@@ -28,7 +48,9 @@ export const UserApp = () => {
 
                 </div>
                 <div className="col">
-                    <UserList users= {initialUsers} />
+                    <UserList 
+                    users= {users}
+                    handrelRemoveUser = {handrelRemoveUser} />
 
                 </div>
 

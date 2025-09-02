@@ -1,6 +1,6 @@
 import { UserRow } from "./UserRow"
 
-export const UserList = ({ users = [] }) => {
+export const UserList = ({ handrelRemoveUser ,users = [] }) => {
     return (
         <>
 
@@ -18,6 +18,7 @@ export const UserList = ({ users = [] }) => {
                     {
                         users.map(({id, username, email}) => (
                             <UserRow 
+                            handrelRemoveUser = {handrelRemoveUser}
                             key={id} 
                             id={id} 
                             username={username} 

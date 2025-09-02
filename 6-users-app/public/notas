@@ -14,7 +14,10 @@ preventDefault es para evitar que a la hora de enviar el form se refresque
 padre
 
 <<-----------useReducer----------->>>>
-
+1. se crea una funcion de flecha que recibe dos parametros el state como arreglo y el action
+2. en el switch se evalua el tipo de accion action,type
+3. ...action.payload se captura el valor de la ccion 
+3. en el padre UsersApp se crea una variable con el useReducer
 
 
 
