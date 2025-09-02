@@ -1,4 +1,20 @@
 1. en UserList.jsx se muestra la lista de usuarios con sus botones 
 2. UserList recibe el initialUsers como parámetro users
 3. dentro de UserList esta una etiqueta de un componente UserRow que itera todos los usuarios de manera dinámica con un map
-4. cmabio prueba notas
+
+
+<<-----------FUNCIONES DE USERFORM----------->>>>
+1. initialUserForm se pasa el estado inicial del objeto a un useState
+2. se descompone el initialUserForm y se asigna al useState (useForm)
+3. se asiga en valor del useForm a los valores de los inputs con value 
+4. onInputChange el es para setear los valores ingresados en los input y obtener el valor por medio del tarjet
+5. onSubmit se usa para validar el formulario y mande una alerta si el formulario no esta completo el 
+preventDefault es para evitar que a la hora de enviar el form se refresque 
+6. se recibe una funcion del padre UsersApp handrelAddUser para capturar el objeto a la hora de enviarlo y trabajarlo desde el 
+padre
+
+<<-----------useReducer----------->>>>
+
+
+
+

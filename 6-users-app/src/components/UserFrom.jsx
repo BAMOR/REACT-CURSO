@@ -5,7 +5,8 @@ import { useState } from "react"
         password: '',
         email: '',
     }
-export const UserForm = () => {
+export const UserForm = ( {handrelAddUser}) => {
+
     const [userForm, setUserForm] = useState(initialUserForm);
 
 
@@ -28,8 +29,8 @@ export const UserForm = () => {
             return;
         }
         event.preventDefault();
-        console.log(userForm)
-
+        handrelAddUser(userForm)
+        // console.log(userForm
         setUserForm(initialUserForm);
 
 
