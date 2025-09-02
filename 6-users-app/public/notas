@@ -1,3 +1,4 @@
 1. en UserList.jsx se muestra la lista de usuarios con sus botones 
 2. UserList recibe el initialUsers como parámetro users
 3. dentro de UserList esta una etiqueta de un componente UserRow que itera todos los usuarios de manera dinámica con un map
+4. cmabio prueba notas
