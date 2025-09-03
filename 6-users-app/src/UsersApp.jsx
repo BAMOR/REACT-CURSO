@@ -12,6 +12,12 @@ import { usersReducer } from "./Reducer/usersReducer"
         }
     ]
 
+        const initialUserForm = {
+            username: '',
+            password: '',
+            email: '',
+        }
+
 export const UserApp = () => {
 
     const [users, dispatch] =  useReducer(usersReducer, initialUsers)
@@ -44,14 +50,21 @@ export const UserApp = () => {
 
             <div className="row">  {/* row es fila */}
                 <div className="col">  {/* col es columna */}
-                    <UserForm handrelAddUser = {handrelAddUser} />
+                    <UserForm 
+                    initialUserForm = {initialUserForm}
+                    handrelAddUser = {handrelAddUser} />
 
                 </div>
                 <div className="col">
-                    <UserList 
+                    {
+                        users.length === 0
+                        ? <div className="alert alert-warning">No hay usuarios agregados!</div>
+                        : <UserList 
                     users= {users}
                     handrelRemoveUser = {handrelRemoveUser} />
 
+                    }
+                    
                 </div>
 
             </div>
