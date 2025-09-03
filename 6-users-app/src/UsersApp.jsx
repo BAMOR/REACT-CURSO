@@ -1,4 +1,4 @@
-import { useReducer } from "react"
+import { useReducer, useState } from "react"
 import { UserForm } from "./components/UserFrom"
 import { UserList } from "./components/UserList"
 import { usersReducer } from "./Reducer/usersReducer"
@@ -21,6 +21,7 @@ import { usersReducer } from "./Reducer/usersReducer"
 export const UserApp = () => {
 
     const [users, dispatch] =  useReducer(usersReducer, initialUsers)
+    const [userSelected, setUserSelected] =  useState (initialUserForm)
 
 
         const handrelAddUser = (user) =>{
@@ -42,6 +43,12 @@ export const UserApp = () => {
 
 
         }
+
+        const handrelUserSelectedForm = (user) => {
+            // console.log(user)
+            setUserSelected({...user});
+            
+        }
     
 
     return (
@@ -51,6 +58,7 @@ export const UserApp = () => {
             <div className="row">  {/* row es fila */}
                 <div className="col">  {/* col es columna */}
                     <UserForm 
+                    userSelected = {userSelected}
                     initialUserForm = {initialUserForm}
                     handrelAddUser = {handrelAddUser} />
 
@@ -61,6 +69,7 @@ export const UserApp = () => {
                         ? <div className="alert alert-warning">No hay usuarios agregados!</div>
                         : <UserList 
                     users= {users}
+                    handrelUserSelectedForm = {handrelUserSelectedForm}
                     handrelRemoveUser = {handrelRemoveUser} />
 
                     }

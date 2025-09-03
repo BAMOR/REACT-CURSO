@@ -1,6 +1,6 @@
 import { UserRow } from "./UserRow"
 
-export const UserList = ({ handrelRemoveUser ,users = [] }) => {
+export const UserList = ({ handrelUserSelectedForm ,handrelRemoveUser ,users = [] }) => {
     return (
         <>
 
@@ -16,13 +16,17 @@ export const UserList = ({ handrelRemoveUser ,users = [] }) => {
                 </thead>
                 <tbody>
                     {
-                        users.map(({id, username, email}) => (
+                        users.map(({id, username, email, password}) => (
                             <UserRow 
-                            handrelRemoveUser = {handrelRemoveUser}
+                            
                             key={id} 
                             id={id} 
                             username={username} 
-                            email={email}/>
+                            email={email}
+                            password= {password}
+                            handrelRemoveUser = {handrelRemoveUser}
+                            handrelUserSelectedForm = {handrelUserSelectedForm}
+                            />
                         ))
                     }
 

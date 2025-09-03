@@ -1,7 +1,7 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 
-export const UserForm = ( {initialUserForm,handrelAddUser}) => {
+export const UserForm = ( {userSelected,initialUserForm,handrelAddUser}) => {
 
     const [userForm, setUserForm] = useState(initialUserForm);
 
@@ -17,6 +17,14 @@ export const UserForm = ( {initialUserForm,handrelAddUser}) => {
             [name]: value,
         })
     } 
+
+    useEffect(() =>{
+
+        setUserForm({
+            ...userSelected,
+            // password: ''
+        })
+    }, [userSelected])
 
     const onSubmit = (event) => {
 
