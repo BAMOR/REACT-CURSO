@@ -1,4 +1,4 @@
-export const UserRow = ({handrelUserSelectedForm, handrelRemoveUser,id, username, email, password}) => {
+export const UserRow = ({handrelUserSelectedForm, handrelRemoveUser,id, username, email, }) => {
 
   
     return (
@@ -14,7 +14,7 @@ export const UserRow = ({handrelUserSelectedForm, handrelRemoveUser,id, username
                         id,
                         username,
                         email,
-                        password
+                        
                     }) }>
                     Update
                 </button>

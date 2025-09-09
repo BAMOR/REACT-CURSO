@@ -1,9 +1,10 @@
-import { useReducer, useState } from "react"
+
 import { UserForm } from "./components/UserFrom"
 import { UserList } from "./components/UserList"
-import { usersReducer } from "./Reducer/usersReducer"
+import { useUsers } from "./hooks/useUsers";
 
 
+<<<<<<< HEAD
     const initialUsers = [
         {
             id: 1,
@@ -18,39 +19,22 @@ import { usersReducer } from "./Reducer/usersReducer"
             password: '',
             email: '',
         }
+=======
+>>>>>>> 95e76595104674bc58bb56a034f7fd6c940c9a85
 
 export const UserApp = () => {
 
-    const [users, dispatch] =  useReducer(usersReducer, initialUsers)
-    const [userSelected, setUserSelected] =  useState (initialUserForm)
+    const {
+                users,
+        userSelected,
+        initialUserForm,
 
+        handrelAddUser,
+        handrelRemoveUser,
+        handrelUserSelectedForm
+    } = useUsers();
 
-        const handrelAddUser = (user) =>{
-            // console.log(user)
-            dispatch({
-                type:'addUser',
-                payload : user
-
-
-            })
-        }
-
-        const handrelRemoveUser =(id) =>{
-            // console.log(id)
-            dispatch ({
-                type: 'removeUser',
-                payload: id,
-            })
-
-
-        }
-
-        const handrelUserSelectedForm = (user) => {
-            // console.log(user)
-            setUserSelected({...user});
-            
-        }
-    
+   
 
     return (
         <div className="container my-4">
