@@ -4,7 +4,7 @@ import { UserList } from "./components/UserList"
 import { useUsers } from "./hooks/useUsers";
 
 
-<<<<<<< HEAD
+
     const initialUsers = [
         {
             id: 1,
@@ -19,8 +19,7 @@ import { useUsers } from "./hooks/useUsers";
             password: '',
             email: '',
         }
-=======
->>>>>>> 95e76595104674bc58bb56a034f7fd6c940c9a85
+
 
 export const UserApp = () => {
 
