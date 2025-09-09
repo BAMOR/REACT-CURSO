@@ -8,7 +8,8 @@ import { usersReducer } from "./Reducer/usersReducer"
         {
             id: 1,
             username: 'pepe',
-            email: 'pepe@correo.com'
+            email: 'pepe@correo.com',
+            password: "1234"
         }
     ]
 
