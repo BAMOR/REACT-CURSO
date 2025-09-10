@@ -20,20 +20,16 @@ const initialUserForm = {
 }
 
 export const useUsers = () => {
-    const [users, dispatch] = useReducer(usersReducer, initialUsers)
-    const [userSelected, setUserSelected] = useState(initialUserForm)
+    const [users, dispatch] = useReducer(usersReducer, initialUsers);
+    const [userSelected, setUserSelected] = useState(initialUserForm);
+    const [visibleFrom, setVisibleForm]= useState(false);
 
 
     const handrelAddUser = (user) => {
         // console.log(user)
-        let type;
-        if (user.id === 0) {
-            type = 'addUser'
-        } else {
-            type = 'updateUser';
-        }
+
         dispatch({
-            type,
+            type: (user.id === 0) ?'addUser' :'updateUser',
             payload: user
 
 
@@ -44,6 +40,8 @@ export const useUsers = () => {
             text: (user.id === 0) ? "El usuario ha sido creado con exito!" : "El usuario ha sido actualizado con exito!",
             icon: "success"
         });
+        handrelCloseForm()
+        
     }
 
     const handrelRemoveUser = (id) => {
@@ -79,6 +77,18 @@ export const useUsers = () => {
     const handrelUserSelectedForm = (user) => {
         // console.log(user)
         setUserSelected({ ...user });
+        setVisibleForm(true)
+
+    }
+
+    const handrelOpenForm = ()=>{
+        setVisibleForm(true);
+
+    }
+
+    const handrelCloseForm = ()=>{
+        setVisibleForm(false);
+        setUserSelected(initialUserForm);
 
     }
 
@@ -88,10 +98,13 @@ export const useUsers = () => {
         users,
         userSelected,
         initialUserForm,
+        visibleFrom,
 
         handrelAddUser,
         handrelRemoveUser,
-        handrelUserSelectedForm
+        handrelUserSelectedForm,
+        handrelOpenForm,
+        handrelCloseForm,
 
     }
 }
