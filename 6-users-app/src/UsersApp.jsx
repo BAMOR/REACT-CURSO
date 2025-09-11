@@ -1,6 +1,6 @@
 
 import { LoginPages } from "./auth/pages/LoginPages";
-import { UsersPage } from "./pages/UserPages";
+import { UsersPage } from "./pages/UserPage";
 
 export const UserApp = () => {
 
