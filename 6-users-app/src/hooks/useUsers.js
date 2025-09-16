@@ -1,7 +1,7 @@
-import { useReducer, useState } from "react"
-import { usersReducer } from "../Reducer/usersReducer"
+import { useReducer, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
-
+import { usersReducer } from "../reducers/usersReducer";
 
 const initialUsers = [
     {
@@ -9,8 +9,8 @@ const initialUsers = [
         username: 'pepe',
         password: '12345',
         email: 'pepe@correo.com'
-    }
-]
+    },
+];
 
 const initialUserForm = {
     id: 0,
@@ -22,89 +22,80 @@ const initialUserForm = {
 export const useUsers = () => {
     const [users, dispatch] = useReducer(usersReducer, initialUsers);
     const [userSelected, setUserSelected] = useState(initialUserForm);
-    const [visibleFrom, setVisibleForm]= useState(false);
+    const [visibleForm, setVisibleForm] = useState(false);
+    const navigate = useNavigate();
 
-
-    const handrelAddUser = (user) => {
-        // console.log(user)
-
+    const handlerAddUser = (user) => {
+        // console.log(user);
         dispatch({
-            type: (user.id === 0) ?'addUser' :'updateUser',
-            payload: user
-
-
+            type: (user.id === 0) ? 'addUser' : 'updateUser',
+            payload: user,
         });
 
-        Swal.fire({
-            title: (user.id === 0) ? 'Usuario Creado' : 'Usuario Actualizado',
-            text: (user.id === 0) ? "El usuario ha sido creado con exito!" : "El usuario ha sido actualizado con exito!",
-            icon: "success"
-        });
-        handrelCloseForm()
-        
+        Swal.fire(
+            (user.id === 0) ?
+                'Usuario Creado' :
+                'Usuario Actualizado',
+            (user.id === 0) ?
+                'El usuario ha sido creado con exito!' :
+                'El usuario ha sido actualizado con exito!',
+            'success'
+        );
+        handlerCloseForm();
+        navigate('/users');
     }
 
-    const handrelRemoveUser = (id) => {
-        // console.log(id)
+    const handlerRemoveUser = (id) => {
+        // console.log(id);
 
         Swal.fire({
-            title: "Estas seguro que desea eliminar?",
-            text: "Cuidado el usuario sera Eliminado!",
-            icon: "warning",
+            title: 'Esta seguro que desea eliminar?',
+            text: "Cuidado el usuario sera eliminado!",
+            icon: 'warning',
             showCancelButton: true,
-            confirmButtonColor: "#3085d6",
-            cancelButtonColor: "#d33",
-            confirmButtonText: "si, eliminar"
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Si, eliminar!'
         }).then((result) => {
             if (result.isConfirmed) {
 
                 dispatch({
                     type: 'removeUser',
                     payload: id,
-                })
-
-                Swal.fire({
-                    title: "Usuario Eliminado!",
-                    text: "El usuario ha sido eliminado con exito",
-                    icon: "success"
                 });
+                Swal.fire(
+                    'Usuario Eliminado!',
+                    'El usuario ha sido eliminado con exito!',
+                    'success'
+                )
             }
-        });
-
+        })
 
     }
 
-    const handrelUserSelectedForm = (user) => {
+    const handlerUserSelectedForm = (user) => {
         // console.log(user)
-        setUserSelected({ ...user });
-        setVisibleForm(true)
-
-    }
-
-    const handrelOpenForm = ()=>{
         setVisibleForm(true);
-
+        setUserSelected({ ...user });
     }
 
-    const handrelCloseForm = ()=>{
+    const handlerOpenForm = () => {
+        setVisibleForm(true);
+    }
+
+    const handlerCloseForm = () => {
         setVisibleForm(false);
         setUserSelected(initialUserForm);
-
     }
-
-
-
     return {
         users,
         userSelected,
         initialUserForm,
-        visibleFrom,
-
-        handrelAddUser,
-        handrelRemoveUser,
-        handrelUserSelectedForm,
-        handrelOpenForm,
-        handrelCloseForm,
-
+        visibleForm,
+        handlerAddUser,
+        handlerRemoveUser,
+        handlerUserSelectedForm,
+        handlerOpenForm,
+        handlerCloseForm,
     }
 }

@@ -1,14 +1,16 @@
-import {Navigate, Route, Routes} from "react-router-dom"
-import { UsersPage } from "../pages/UserPage"
+import { Navigate, Route, Routes } from "react-router-dom"
 import { Navbar } from "../components/layout/Navbar"
+import { UsersPage } from "../pages/UsersPage"
 
-export const UserRoutes = ({login,handrelLogout })=> {
+export const UserRoutes = ({ login, handlerLogout }) => {
 
-    <>
-        <Navbar login ={login} handrelLogout = {handrelLogout} />
-        <Routes>
-            <Route path="users" element = {<UsersPage/>}/>
-            <Route path="/" element = {<Navigate to = "/users"/>}/>
-        </Routes>
-    </>
+    return (
+        <>
+            <Navbar login={login} handlerLogout={handlerLogout} />
+            <Routes>
+                <Route path="users" element={<UsersPage />} />
+                <Route path="/" element={<Navigate to="/users" />} />
+            </Routes>
+        </>
+    )
 }
