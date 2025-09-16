@@ -1,36 +1,26 @@
 
-import { useReducer } from "react";
 import { LoginPages } from "./auth/pages/LoginPages";
 import { UsersPage } from "./pages/UserPage";
-import { loginReducer } from "./auth/pages/reducer/loginReducer";
-import Swal from "sweetalert2";
+
+import { Navbar } from "./components/layout/Navbar";
+import { useAuth } from "./auth/pages/hooks/useAuth";
 
 
-    const initialLogin ={
-        isAuth:false,
-        user: undefined,
-    };
+
 export const UserApp = () => {
 
    
-    const[login, dispach] = useReducer(loginReducer, initialLogin);
-    const handlerLogin = ({username, password}) => {
-         if(username === 'admin' && password ==='12345'){
-            const user = {username: 'admin'}
-            dispach({
-                type: 'login',
-                payload:user,
-
-            })
-        }else{
-            Swal.fire('Error Login','Username o password invalidos', 'error')
-
-        }
-    }
+const {login, handlerLogin, handrelLogout} =useAuth();
+    
     return (
         <>
-        {login.isAuth
-        ?<UsersPage/>
+        {
+        login.isAuth
+        ?(
+            <>
+        <Navbar login ={login} handrelLogout = {handrelLogout} />
+        <UsersPage/>
+    </>)
         : <LoginPages handlerLogin= {handlerLogin} /> }
        
  
